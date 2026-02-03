@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>첫 거래 시작하기</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f8fafc;
+}
+
+/* ====== 다른 슬라이드와 통일 구조 ====== */
+.slide-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-container {
+  width: 1280px;
+  max-width: 100%;
+  height: 720px;
+  background-color: white;
+  display: flex;
+  margin: 0 auto;
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 1.3;
+  padding: 60px 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 0.9;
+  background-color: #f8fafc;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #edf2f7;
+  overflow: hidden; /* ← 핵심: 오른쪽 짤림 방지 */
+}
+
+/* ===== 디자인 요소들 (네 코드 거의 유지) ===== */
+.step-badge {
+  display: inline-block;
+  background-color: #4c6ef5;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.main-title {
+  font-size: 44px;
+  font-weight: 800;
+  color: #1a202c;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.sub-title {
+  font-size: 18px;
+  color: #718096;
+  margin: 0 0 40px 0;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.feature-card {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: #718096;
+  line-height: 1.5;
+}
+
+.card-blue .icon-box { background-color: #ebf8ff; color: #3182ce; }
+.card-purple .icon-box { background-color: #faf5ff; color: #805ad5; }
+.card-green .icon-box { background-color: #f0fff4; color: #38a169; }
+.card-orange .icon-box { background-color: #fffaf0; color: #dd6b20; }
+
+.tip-box {
+  margin-top: auto;
+  background-color: #f7fafc;
+  border-left: 4px solid #4c6ef5;
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+}
+
+/* 배경 원 */
+.bg-gradient-circle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.circle-1 { background-color: #c3dafe; top: -150px; right: -150px; }
+.circle-2 { background-color: #e9d8fd; bottom: -150px; left: -100px; }
+
+/* 폰 목업 */
+.phone-mockup {
+  width: 260px;
+  height: 520px;
+  background-color: #fff;
+  border-radius: 36px;
+  border: 8px solid #1a202c;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background-color: #1a202c;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 떠있는 배지 */
+.floating-badge {
+  position: absolute;
+  background-color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 20;
+}
+
+.badge-btc { top: 140px; left: 50px; }
+.badge-eth { bottom: 140px; right: 50px; }
+
+/* ====== 📱 모바일 최종 정리 ====== */
+@media (max-width: 768px) {
+
+  .slide-container {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .left-panel {
+    padding: 30px 20px;
+  }
+
+  .right-panel {
+    padding: 30px 0;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-mockup {
+    transform: scale(0.9);
+  }
+
+  .floating-badge {
+    display: none; /* 모바일에서 배지 겹침 방지 */
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="slide-wrapper">
+  <div class="slide-container">
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div>
+        <span class="step-badge">STEP 02</span>
+        <h1 class="main-title">첫 거래 시작하기</h1>
+        <p class="sub-title">Getting Started with Your First Transaction</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card card-blue">
+          <div class="card-header">
+            <div class="icon-box"><i class="fas fa-arrow-down"></i></div>
+            <h3 class="card-title">입금 (Receive)</h3>
+          </div>
+          <p class="card-desc">
+            입금받을 네트워크를 선택하고 주소를 복사하거나 QR코드를 공유하세요.
+          </p>
+        </div>
+
+        <div class="feature-card card-purple">
+          <div class="card-header">
+            <div class="icon-box"><i class="fas fa-paper-plane"></i></div>
+            <h3 class="card-title">송금 (Send)</h3>
+          </div>
+          <p class="card-desc">
+            수신 주소와 금액을 입력하고 네트워크 수수료(Gas) 확인 후 전송합니다.
+          </p>
+        </div>
+
+        <div class="feature-card card-green">
+          <div class="card-header">
+            <div class="icon-box"><i class="fas fa-plus"></i></div>
+            <h3 class="card-title">토큰 추가 (Add)</h3>
+          </div>
+          <p class="card-desc">
+            'Add assets' 버튼을 눌러 목록에 보이지 않는 토큰을 추가할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="feature-card card-orange">
+          <div class="card-header">
+            <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
+            <h3 class="card-title">스왑 (Swap)</h3>
+          </div>
+          <p class="card-desc">
+            Exchange 탭에서 다른 암호화폐로 즉시 교환할 수 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <i class="fas fa-lightbulb" style="color:#4c6ef5;font-size:20px;"></i>
+        <div class="tip-content">
+          <strong>안전한 거래를 위한 Tip</strong>
+          <p>
+            처음 전송할 때는 소액으로 먼저 테스트하여 정상적으로 도착하는지 확인한 후
+            본 금액을 전송하세요. 네트워크(Chain) 일치 여부를 반드시 확인해야 합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="bg-gradient-circle circle-1"></div>
+      <div class="bg-gradient-circle circle-2"></div>
+
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <img class="phone-screen"
+          src="https://www.genspark.ai/api/files/s/hDGhDH3z"
+          alt="Daipha Wallet Balance Screen" />
+      </div>
+
+      <div class="floating-badge badge-btc">
+        <i class="fab fa-bitcoin" style="color:#f7931a;font-size:18px;"></i>
+        <span>Bitcoin</span>
+      </div>
+
+      <div class="floating-badge badge-eth">
+        <i class="fab fa-ethereum" style="color:#627eea;font-size:18px;"></i>
+        <span>Ethereum</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

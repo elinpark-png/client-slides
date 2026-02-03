@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>자산 교환하기</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f8fafc;
+}
+
+/* ===== 다른 슬라이드와 통일 구조 ===== */
+.slide-wrapper{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-container{
+  width: 1280px;
+  max-width: 100%;
+  height: 720px;
+  display: flex;
+  background: #f8fafc;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* ===== LEFT PANEL ===== */
+.left-panel{
+  flex: 1.3;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+}
+
+.header-tag{
+  display: inline-block;
+  background:#e2e8f0;
+  color:#475569;
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.slide-title{
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.slide-subtitle{
+  font-size: 15px;
+  color: #64748b;
+  margin: 0 0 25px 0;
+}
+
+/* Steps */
+.steps-container{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.step-item{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.step-number{
+  width:26px;
+  height:26px;
+  border-radius:8px;
+  background:#475569;
+  color:white;
+  font-size:14px;
+  font-weight:700;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-shrink:0;
+  box-shadow:0 4px 6px rgba(71,85,105,0.2);
+  margin-top:2px;
+}
+
+.step-content h3{
+  font-size:16px;
+  font-weight:700;
+  color:#334155;
+  margin:0 0 4px 0;
+}
+
+.step-content p{
+  font-size:13.5px;
+  color:#475569;
+  margin:0 0 6px 0;
+  line-height:1.5;
+  word-break:keep-all;
+}
+
+/* 옵션 리스트 */
+.options-list{
+  margin:0;
+  padding-left:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.options-list li{
+  font-size:12.5px;
+  color:#55657e;
+  line-height:1.4;
+  background:#ffffff;
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid #e2e8f0;
+  box-shadow:0 1px 2px rgba(0,0,0,0.05);
+}
+
+.option-title{
+  color:#2563eb;
+  font-weight:700;
+  margin-right:4px;
+}
+
+.highlight{
+  color:#2563eb;
+  font-weight:600;
+}
+
+/* ===== RIGHT PANEL ===== */
+.right-panel{
+  flex:0.7;
+  position:relative;
+  background:#f8fafc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow:hidden; /* ← 잘림 방지 핵심 */
+}
+
+.visual-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  height:100%;
+}
+
+.visual-card{
+  width:280px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#ffffff;
+  border:1px solid #e2e8f0;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.visual-card img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.stack-arrow{
+  width:32px;
+  height:32px;
+  background:#e2e8f0;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#64748b;
+}
+
+/* ===== 모바일 최종 보정 ===== */
+@media (max-width: 768px){
+
+  .slide-container{
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .left-panel{
+    padding: 30px 20px;
+  }
+
+  .right-panel{
+    padding: 20px 0 40px;
+  }
+
+  .visual-card{
+    width: 240px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="slide-wrapper">
+  <div class="slide-container">
+
+    <!-- Left -->
+    <div class="left-panel">
+      <div class="header-tag">STEP 03</div>
+      <h1 class="slide-title">자산 교환하기 (Exchange)</h1>
+      <p class="slide-subtitle">Instant Asset Swapping</p>
+
+      <div class="steps-container">
+
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Exchange 탭 선택</h3>
+            <p>
+              Daipha 앱 하단 메뉴바에서 
+              <span class="highlight">Exchange</span> 탭을 선택하여 교환 화면으로 이동합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>보낼 자산 및 수량 입력</h3>
+            <p>
+              <strong>You send</strong>(보낼 자산)와 
+              <strong>You get</strong>(받을 자산)을 선택하고 수량을 입력합니다. 
+              실시간 예상 수령액을 확인할 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>교환 옵션 선택 (Exchange Offers)</h3>
+            <p>교환 방식을 선택하고 <span class="highlight">Next</span>를 클릭합니다.</p>
+
+            <ul class="options-list">
+              <li>
+                <span class="option-title">Floating rate:</span> 
+                변동 환율. 시장 가격 변동을 반영하여 최적의 가격을 보장하지만, 
+                최종 수령액이 달라질 수 있습니다.(도착시간 기준)
+              </li>
+              <li>
+                <span class="option-title">Fixed rate:</span> 
+                고정 환율. 확정된 비율로 교환하여 가격 변동 위험이 없지만, 
+                Network fee가 별도로 발생합니다.
+              </li>
+              <li>
+                <span class="option-title">DEX:</span> 
+                탈중앙화 거래소 방식. 중개자 없이 직접 스왑하며, 
+                일부 페어는 지원되지 않을 수 있습니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="right-panel">
+      <div class="visual-stack">
+
+        <div class="visual-card">
+          <img 
+            alt="Exchange Input Interface"
+            src="https://www.genspark.ai/api/files/s/ZE6eSxFd" />
+        </div>
+
+        <div class="stack-arrow">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+
+        <div class="visual-card">
+          <img 
+            alt="Exchange Offers Interface"
+            src="https://www.genspark.ai/api/files/s/glfE46AL" />
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

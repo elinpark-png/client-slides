@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지갑 생성 단계별 화면</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8fafc;
+}
+
+/* ===== 1,2번과 동일 구조 ===== */
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 실제 슬라이드 캔버스 (데스크톱 기준) */
+.slide-container {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8fafc;
+    position: relative;
+}
+
+/* 배경 장식 */
+.bg-blob-1 {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(76, 110, 245, 0.03);
+    border-radius: 50%;
+    z-index: 0;
+}
+.bg-blob-2 {
+    position: absolute;
+    bottom: -150px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background-color: rgba(123, 111, 161, 0.03);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* 헤더 */
+.header {
+    padding: 30px 40px 10px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 콘텐츠 영역 */
+.content-area {
+    flex: 1;
+    padding: 10px 40px 40px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 이미지 래퍼 (중앙 정렬 유지) */
+.image-wrapper {
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* 메인 이미지 */
+.main-image {
+    max-width: 100%;
+    max-height: 560px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* 번호 배지 */
+.badge {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: #4c6ef5;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border: 2px solid white;
+}
+
+/* 배지 위치 (비율 기준 유지) */
+.badge-1 { top: 45%; left: 5%; }
+.badge-2 { top: 45%; left: 30%; }
+.badge-3 { top: 45%; left: 55%; }
+.badge-4 { top: 45%; left: 80%; }
+
+.badge-5 { top: 90%; left: 5%; }
+.badge-6 { top: 90%; left: 30%; }
+.badge-7 { top: 90%; left: 55%; }
+.badge-8 { top: 90%; left: 80%; }
+
+/* ===== 모바일 반응형 (1,2번과 동일 로직) ===== */
+@media (max-width: 768px) {
+    .wrapper {
+        align-items: flex-start;
+    }
+
+    .slide-container {
+        transform: scale(0.72);   /* 👈 아이폰 잘림 방지 핵심 */
+        transform-origin: top center;
+        height: auto;
+    }
+
+    .header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .content-area {
+        padding: 10px 20px 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+<div class="slide-container">
+
+<!-- 배경 -->
+<div class="bg-blob-1"></div>
+<div class="bg-blob-2"></div>
+
+<!-- 헤더 -->
+<div class="header">
+<div class="title-container">
+<h1 style="font-size: 32px; font-weight: 800; margin: 0;">지갑 생성 단계별 화면</h1>
+<p style="font-size: 14px; color: #64748b; margin: 0;">Step-by-Step UI Screens</p>
+</div>
+
+<div style="font-size: 12px; color: #718096; background: #edf2f7; padding: 6px 12px; border-radius: 8px; display: flex; align-items: center;">
+<i class="fas fa-list-ol mr-2 text-blue-500"></i>
+<span class="font-medium text-slate-600">전체 8단계 프로세스 요약</span>
+</div>
+</div>
+
+<!-- 콘텐츠 -->
+<div class="content-area">
+<div class="image-wrapper">
+
+<img 
+alt="Daipha Wallet Registration Steps"
+class="main-image"
+src="https://www.genspark.ai/api/files/s/bT1yzpCe">
+
+<!-- 번호 배지 -->
+<div class="badge badge-1">1</div>
+<div class="badge badge-2">2</div>
+<div class="badge badge-3">3</div>
+<div class="badge badge-4">4</div>
+<div class="badge badge-5">5</div>
+<div class="badge badge-6">6</div>
+<div class="badge badge-7">7</div>
+<div class="badge badge-8">8</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

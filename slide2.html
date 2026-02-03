@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지갑 생성하기</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #ffffff;
+}
+
+/* ===== 핵심 구조 (1번과 동일 방식) ===== */
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 실제 슬라이드 캔버스 (데스크톱 기준) */
+.slide-container {
+    width: 1280px;
+    height: 720px;
+    display: flex;
+    background-color: #ffffff;
+}
+
+/* Left Content Area */
+.left-panel {
+    flex: 1.15;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+}
+
+.header-tag {
+    display: inline-block;
+    background-color: #eef2ff;
+    color: #4c6ef5;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.slide-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a202c;
+    line-height: 1.2;
+    margin: 0 0 6px 0;
+}
+
+.slide-subtitle {
+    font-size: 15px;
+    color: #718096;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.step-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: #4c6ef5;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(76, 110, 245, 0.3);
+    margin-top: 2px;
+}
+
+.step-content { flex: 1; }
+
+.step-content h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 2px 0;
+}
+
+.step-content p {
+    font-size: 12.5px;
+    color: #4a5568;
+    margin: 0;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+/* Right Visual Area */
+.right-panel {
+    flex: 0.85;
+    position: relative;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floating-screen {
+    width: 320px;
+    max-height: 680px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.floating-screen img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.inline-icon {
+    display: inline-block;
+    width: 32px;
+    vertical-align: middle;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.warning-text {
+    color: #e53e3e;
+    font-weight: 700;
+    margin-top: 1px;
+    font-size: 12.5px !important;
+}
+
+/* ===== 모바일 반응형 (1번과 동일 로직) ===== */
+@media (max-width: 768px) {
+    .wrapper {
+        align-items: flex-start;
+    }
+
+    .slide-container {
+        transform: scale(0.72); /* 아이폰 잘림 방지 핵심 */
+        transform-origin: top center;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-panel, .right-panel {
+        width: 100%;
+        flex: none;
+    }
+
+    .right-panel {
+        margin-top: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="slide-container">
+
+    <!-- Left Side -->
+    <div class="left-panel">
+      <div class="header-tag">STEP 01</div>
+      <h1 class="slide-title">지갑 생성하기</h1>
+      <p class="slide-subtitle">Create New Wallet</p>
+
+      <div class="steps-container">
+
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>웹사이트 접속 및 앱 실행</h3>
+            <p><strong>1-1.</strong> Chrome 앱스토어에서 Daipha Wallet을 검색하여 <strong>Chrome에 추가</strong>를 클릭하여 설치합니다.</p>
+            <p>
+              <strong>1-2.</strong> 크롬 상단에 확장프로그램 아이콘
+              <img alt="extension icon" class="inline-icon" src="https://www.genspark.ai/api/files/s/VpDVV0RC">
+              이 생성되면 클릭하여 <strong>Create a wallet</strong>을 선택합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>새 지갑 만들기 선택</h3>
+            <p>초기 화면에서 <strong>[Create New Wallet]</strong> 버튼을 탭하여 새로운 지갑 생성 프로세스를 시작합니다.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>비밀번호 설정</h3>
+            <p>비밀번호 생성 규칙(최소 8자, 대소문자 포함 등)을 확인하고 안전한 비밀번호를 입력한 후 Next 버튼을 클릭합니다.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>니모닉 구문 백업 (Mnemonic Phrase)</h3>
+            <p>15개의 단어 복구 구문을 안전한 장소에 기록합니다.</p>
+            <p class="warning-text">
+              <i class="fas fa-exclamation-triangle mr-1"></i>
+              경고: 분실 시 영원히 자산을 잃게 됩니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>니모닉 구문 확인 (Confirm Phrase)</h3>
+            <p>시스템이 요청하는 특정 단어를 순서대로 입력하면 지갑이 생성됩니다.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="right-panel">
+      <div class="floating-screen">
+        <img alt="Daipha Wallet Dashboard" src="https://www.genspark.ai/api/files/s/msvbGnBO">
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
