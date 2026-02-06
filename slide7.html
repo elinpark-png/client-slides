@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daipha Security Manual - Single Slide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+        body { font-family: 'Inter', 'Noto Sans KR', sans-serif; background-color: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .slide-container { 
+            width: 1280px; height: 720px; 
+            background: white; 
+            position: relative; 
+            overflow: hidden; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            padding: 60px 80px;
+        }
+        .header-line { width: 100px; height: 6px; background: #3b82f6; margin-bottom: 24px; }
+        .step-badge { background: #eff6ff; color: #3b82f6; padding: 4px 16px; border-radius: 50px; font-weight: 700; font-size: 14px; margin-bottom: 16px; display: inline-block; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1); }
+        .footer { position: absolute; bottom: 40px; left: 80px; right: 80px; display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; padding-top: 20px; color: #94a3b8; font-size: 14px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full -mr-32 -mt-32 z-0"></div>
+        
+        <!-- Header -->
+        <div class="relative z-10">
+            <div class="step-badge">STEP 04</div>
+            <div class="header-line"></div>
+            <h1 class="text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                스마트 자산 검증 <span class="text-blue-600">보안 프로토콜</span>
+            </h1>
+            <p class="text-xl text-slate-500 max-w-2xl leading-relaxed">
+                글로벌 파트너 <b>Changelly</b>와의 협업으로 불법 자금(Black Coin)을 실시간 필터링하여 고객님의 자산을 보호합니다.
+            </p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-12 gap-8 mt-12 relative z-10">
+            <!-- Left Side: Logic -->
+            <div class="col-span-7 space-y-6">
+                <div class="card p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center text-2xl mr-4">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-800">강력한 블랙리스트 필터링</h3>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        타 지갑에서 전송된 출처가 불분명한 자산이 유입될 경우, <b>Exchange(교환)</b> 시점에서 자동으로 위험성을 감지합니다. 이는 자산 동결 및 소명 절차의 리스크를 사전에 방지하는 다이파만의 핵심 기술입니다.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-emerald-50 border border-emerald-100 p-6 rounded-2xl">
+                        <div class="flex items-center text-emerald-600 font-bold mb-3">
+                            <i class="fa-solid fa-circle-check mr-2"></i> White Coin (정상)
+                        </div>
+                        <p class="text-emerald-800 text-sm leading-snug">검증이 완료된 깨끗한 자산으로 모든 서비스 이용 가능</p>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-100 p-6 rounded-2xl">
+                        <div class="flex items-center text-rose-600 font-bold mb-3">
+                            <i class="fa-solid fa-circle-xmark mr-2"></i> Black Coin (위험)
+                        </div>
+                        <p class="text-rose-800 text-sm leading-snug">불법 연루 자산 감지 시 교환 차단으로 지갑 보호</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Visual/Summary -->
+            <div class="col-span-5">
+                <div class="bg-slate-900 text-white p-10 rounded-3xl h-full flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-blue-400 font-bold text-sm uppercase tracking-widest mb-4">Why Daipha?</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-400 mt-1.5 mr-3"></i>
+                                <span>거래소 계정 동결 리스크 원천 차단</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-400 mt-1.5 mr-3"></i>
+                                <span>복잡한 자산 소명 절차 불필요</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-400 mt-1.5 mr-3"></i>
+                                <span>실시간 글로벌 AML 데이터베이스 연동</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-slate-700">
+                        <p class="text-sm text-slate-400 leading-relaxed italic">
+                            "Exchange 스왑 시 발생하는 에러는 단순한 오류가 아닙니다. 고객님의 지갑이 범죄 자금에 연루되지 않도록 보호하는 최첨단 방패입니다."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>DAIPHA USER MANUAL | SMART SECURITY PROTOCOL</span>
+            <span>CONFIDENTIAL & SECURE</span>
+        </div>
+    </div>
+</body>
+</html>
